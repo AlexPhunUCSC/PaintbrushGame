@@ -12,7 +12,7 @@ class Play extends Phaser.Scene {
     }
 
     create() {
-        this.starfield = this.add.tileSprite(0, 0, 16, 16, 'bg').setOrigin(0,0);
+        this.starfield = this.add.tileSprite(0, 0, 640, 480, 'bg').setOrigin(0,0);
 
         this.add.rectangle(0, borderUISize + borderPadding, 
             game.config.width, 
@@ -32,7 +32,7 @@ class Play extends Phaser.Scene {
         for (let i = 0; i < 21; i++){
             this.plats[i] = new Plat(this, 32 * i, 392, 'plat', 0).setOrigin(0, 0);
         }
-        this.item = new Thing(this, 32, 392, 'item', 0).setOrigin(0, 0);
+        this.item = new Thing(this, 470, 370, 'item', 0).setOrigin(0, 0);
         
         keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -60,6 +60,7 @@ class Play extends Phaser.Scene {
     }
 
     update() {
+        this.starfield.tilePositionX -= 4;
         this.item.update();
         /*change this update function to be entirely 
         "if the collision between the mc and item happens, then this.pl1Score++"        
@@ -71,7 +72,7 @@ class Play extends Phaser.Scene {
             console.log(this.p1Score);
         }
         //credit scene not working
-        if(this.p1Score >= 1){
+        if(this.p1Score >= 3){
             this.scene.start("creditScene");
         }
 
