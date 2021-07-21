@@ -35,8 +35,6 @@ class Play extends Phaser.Scene {
         for (let i = 0; i < 21; i++){
             this.plats[i] = new Plat(this, 32 * i, 392, 'plat', 0).setOrigin(0, 0);
         }
-
-        //Trying fix this to get the item to move
         this.item = new Thing(this, 32, 392, 'item', 0).setOrigin(0, 0);
         
         keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
