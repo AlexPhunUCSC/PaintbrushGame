@@ -4,10 +4,7 @@ class Play extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('falling', './assets/Falling.png'); 
         this.load.image('menu', './assets/MenuScreen.png');
-        this.load.image('jump', './assets/Jump.png'); 
-        this.load.image('spike', './assets/Spike.png'); 
         this.load.image('bg', './assets/bg.png');
         this.load.image('plat', './assets/plat.png');
         this.load.image('item', './assets/TempColor.png');
@@ -74,7 +71,7 @@ class Play extends Phaser.Scene {
             console.log(this.p1Score);
         }
         //credit scene not working
-        if(this.p1Score >= 5){
+        if(this.p1Score >= 1){
             this.scene.start("creditScene");
         }
 
@@ -101,7 +98,7 @@ class Play extends Phaser.Scene {
             if(this.pl1.x < this.item.x + this.item.width &&
                this.pl1.x + this.pl1.width > this.item.x &&
                this.pl1.y < this.item.y + this.item.height &&
-               this.pl1.height + this.item.y > this.item.y) {
+               this.pl1.height + this.pl1.y > this.item.y) {
                 return true;
             }
             return false;
