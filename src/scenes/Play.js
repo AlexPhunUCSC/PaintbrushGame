@@ -75,7 +75,8 @@ class Play extends Phaser.Scene {
             this.scoreLeft.text = this.p1Score;
             console.log(this.p1Score);
         }
-        if(this.p1Score == 5){
+        //credit scene not working
+        if(this.p1Score >= 5){
             this.scene.start("creditScene");
         }
 
@@ -97,7 +98,7 @@ class Play extends Phaser.Scene {
     }
 }
 
-        //the x and y arent working
+        //the player can pick up the item at any height
         checkCollision(pl1, item) {
             if(this.pl1.x < this.item.x + this.item.width &&
                this.pl1.x + this.pl1.width > this.item.x &&
