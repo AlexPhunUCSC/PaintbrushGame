@@ -69,14 +69,23 @@ class Play extends Phaser.Scene {
         /*change this update function to be entirely 
         "if the collision between the mc and item happens, then this.pl1Score++"        
         */
+        if(this.checkCollision(this.mc, this.item)) {
+            this.item.reset();
+            this.p1Score++;
+            this.scoreLeft.text = this.p1Score;
+            console.log(this.p1Score);
+        }
+        if(this.p1Score == 5){
+            this.scene.start("creditScene");
+        }
+
+        
         if(true) {
             this.pl1.update();
             for(let i = 0; i < 21; i++){
                 this.plats[i].update();
                 if(this.plats[i].x == this.pl1.x){
                     this.pl1.evaluateFloor(0, this.plats[i].y);
-                    this.p1Score++; 
-                    this.scoreLeft.text = this.p1Score;
                 }
                 if(this.plats[i].x == this.pl1.x + 16){
                     this.pl1.evaluateFloor(1, this.plats[i].y);
@@ -87,4 +96,15 @@ class Play extends Phaser.Scene {
             this.scene.start("gameOverScene");
     }
 }
+
+        //the x and y arent working
+        checkCollision(pl1, item) {
+            if(this.pl1.x < this.item.x + this.item.width &&
+               this.pl1.x + this.pl1.width > this.item.x &&
+               this.pl1.y < this.item.y + this.item.height &&
+               this.pl1.height + this.item.y > this.item.y) {
+                return true;
+            }
+            return false;
+        }
 }
